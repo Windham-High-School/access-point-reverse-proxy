@@ -1,0 +1,25 @@
+server {
+    listen 80;
+
+    location / {
+        return 302 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+
+    ssl_certificate /etc/ssl/certs/server.pem;
+    ssl_certificate_key /etc/ssl/private/server.key;
+
+    location / {
+        proxy_pass         ${NGINX_PROXY_PASS};
+        proxy_redirect     off;
+        proxy_http_version 1.1;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   X-API-Secret ${API_SECRET};
+        proxy_buffer_size           128k;
+        proxy_buffers               4 256k;
+        proxy_busy_buffers_size     256k;
+    }
+}

@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  wlan:
+    restart: always
+    build: 
+      context: .
+    cap_add:
+      - NET_ADMIN
+    stop_grace_period: 2m
+    network_mode: "host"
+
+  proxy_pass:
+    restart: always
+    image: nginx
+    volumes:
+    - ./templates:/etc/nginx/templates
+    - ./certs/server.key:/etc/ssl/private/server.key
+    - ./certs/server.pem:/etc/ssl/certs/server.pem
+    ports:
+    - "80:80"
+    - "443:443"
+    environment:
+    - NGINX_PROXY_PASS=${NGIX_PROXY_PASS:-https://api-service-hobzb6z4rq-uc.a.run.app}
+    - API_SECRET=${API_SECRET}
