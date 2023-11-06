@@ -19,7 +19,7 @@
 
 ## Checkout the code
   * mkdir code && cd code
-  * git clone ...
+  * git clone https://github.com/Windham-High-School/access-point-reverse-proxy.git
 
 ## Set things up
   * cd code/access-point-reverse-proxy
