@@ -16,6 +16,7 @@
 
 ## Add the permissions to the current user to run Docker commands
   * sudo gpasswd -a $USER docker
+  * sudo shutdown -r now
 
 ## Checkout the code
   * mkdir code && cd code
