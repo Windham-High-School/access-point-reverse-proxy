@@ -21,4 +21,4 @@ services:
     - "443:443"
     environment:
     - NGINX_PROXY_PASS=${NGIX_PROXY_PASS:-https://api-service-hobzb6z4rq-uc.a.run.app}
-    - API_SECRET=${API_SECRET}
+    - API_SECRET=${API_SECRET:-}
