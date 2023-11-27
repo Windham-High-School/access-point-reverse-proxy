@@ -22,11 +22,15 @@
   * git clone https://github.com/Windham-High-School/access-point-reverse-proxy.git
 
 ## Set things up
-  * cd code/access-point-reverse-proxy
+  * cd access-point-reverse-proxy
   * ./generate_certs.sh
-  * vi .env
-    * set API_SECRET
 
 ## Start so that it will restart on device restart
-  * docker compose up -d
+  * docker compose up -d wlan
 
+## If you are going to set up a reverse proxy for the API server
+  * vi .env
+    * set API_SECRET
+   
+## Start the reverse proxy so that it will restart on device restart
+  * docker compose up -d proxy_pass
