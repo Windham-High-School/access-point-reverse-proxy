@@ -1,10 +1,10 @@
 from alpine
 
 # Install packages
-RUN apk update && apk add hostapd dhcp iptables
+RUN apk update && apk add hostapd dhcp iptables gettext-envsubst
 
 # Configure Hostapd (default will be open)
-ADD confs/hostapd.conf /etc/hostapd/hostapd.conf
+ADD confs/hostapd.conf.template /etc/hostapd/hostapd.conf.template
 # Configure DHCPD
 ADD confs/dhcpd.conf /etc/dhcp/dhcpd.conf
 RUN touch /var/lib/dhcp/dhcpd.leases

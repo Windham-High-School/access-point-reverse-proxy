@@ -8,6 +8,8 @@ services:
       - NET_ADMIN
     stop_grace_period: 2m
     network_mode: "host"
+    environment:
+      - SSID=${SSID:-TheCubeProject}
 
   proxy_pass:
     restart: always
